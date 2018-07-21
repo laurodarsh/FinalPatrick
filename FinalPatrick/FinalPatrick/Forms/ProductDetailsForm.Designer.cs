@@ -105,6 +105,7 @@
             this.pbxback.Size = new System.Drawing.Size(45, 40);
             this.pbxback.TabIndex = 16;
             this.pbxback.TabStop = false;
+            this.pbxback.Click += new System.EventHandler(this.pbxback_Click);
             // 
             // pbxDelete
             // 

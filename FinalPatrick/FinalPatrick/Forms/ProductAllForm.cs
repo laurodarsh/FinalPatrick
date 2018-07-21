@@ -23,5 +23,12 @@ namespace FinalPatrick.Forms
             home.Show();
             this.Hide();
         }
+
+        private void pbxAdd_Click(object sender, EventArgs e)
+        {
+            ProductDetailsForm cprod = new ProductDetailsForm();
+            cprod.Show();
+            this.Hide();
+        }
     }
 }

@@ -24,5 +24,12 @@ namespace FinalPatrick.Forms
             home.Show();
             this.Hide();
         }
+
+        private void pbxAdd_Click(object sender, EventArgs e)
+        {
+            UserDetailsForm cuser = new UserDetailsForm();
+            cuser.Show();
+            this.Hide();
+        }
     }
 }

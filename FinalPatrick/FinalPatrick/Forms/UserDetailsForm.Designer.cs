@@ -60,6 +60,7 @@
             this.pbxBack.Size = new System.Drawing.Size(45, 40);
             this.pbxBack.TabIndex = 16;
             this.pbxBack.TabStop = false;
+            this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
             // pbxSave
             // 
