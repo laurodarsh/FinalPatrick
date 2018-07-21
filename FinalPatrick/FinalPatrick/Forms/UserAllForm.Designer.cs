@@ -93,6 +93,7 @@
             this.pbxAdd.Size = new System.Drawing.Size(45, 40);
             this.pbxAdd.TabIndex = 12;
             this.pbxAdd.TabStop = false;
+            this.pbxAdd.Click += new System.EventHandler(this.pbxAdd_Click);
             // 
             // dgvUser
             // 

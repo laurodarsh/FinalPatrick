@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryDetailsForm));
             this.lblName = new System.Windows.Forms.Label();
             this.cbxActive = new System.Windows.Forms.CheckBox();
-            this.cbxAcitve = new System.Windows.Forms.Label();
+            this.lblActive = new System.Windows.Forms.Label();
             this.tbxName = new System.Windows.Forms.TextBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
             this.pbxDelete = new System.Windows.Forms.PictureBox();
@@ -60,15 +60,15 @@
             this.cbxActive.TabIndex = 1;
             this.cbxActive.UseVisualStyleBackColor = true;
             // 
-            // cbxAcitve
+            // lblActive
             // 
-            this.cbxAcitve.AutoSize = true;
-            this.cbxAcitve.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxAcitve.Location = new System.Drawing.Point(9, 77);
-            this.cbxAcitve.Name = "cbxAcitve";
-            this.cbxAcitve.Size = new System.Drawing.Size(51, 24);
-            this.cbxAcitve.TabIndex = 2;
-            this.cbxAcitve.Text = "Ativo";
+            this.lblActive.AutoSize = true;
+            this.lblActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActive.Location = new System.Drawing.Point(9, 77);
+            this.lblActive.Name = "lblActive";
+            this.lblActive.Size = new System.Drawing.Size(51, 24);
+            this.lblActive.TabIndex = 2;
+            this.lblActive.Text = "Ativo";
             // 
             // tbxName
             // 
@@ -88,6 +88,7 @@
             this.pbxBack.Size = new System.Drawing.Size(45, 40);
             this.pbxBack.TabIndex = 16;
             this.pbxBack.TabStop = false;
+            this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
             // pbxDelete
             // 
@@ -112,6 +113,7 @@
             this.pbxSave.Size = new System.Drawing.Size(45, 40);
             this.pbxSave.TabIndex = 21;
             this.pbxSave.TabStop = false;
+         
             // 
             // CategoryDetailsForm
             // 
@@ -123,7 +125,7 @@
             this.Controls.Add(this.pbxSave);
             this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.tbxName);
-            this.Controls.Add(this.cbxAcitve);
+            this.Controls.Add(this.lblActive);
             this.Controls.Add(this.cbxActive);
             this.Controls.Add(this.lblName);
             this.Name = "CategoryDetailsForm";
@@ -140,7 +142,7 @@
 
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.CheckBox cbxActive;
-        private System.Windows.Forms.Label cbxAcitve;
+        private System.Windows.Forms.Label lblActive;
         private System.Windows.Forms.TextBox tbxName;
         private System.Windows.Forms.PictureBox pbxBack;
         private System.Windows.Forms.PictureBox pbxDelete;

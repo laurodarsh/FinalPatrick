@@ -26,7 +26,9 @@ namespace FinalPatrick.Forms
 
         private void pbxAdd_Click(object sender, EventArgs e)
         {
-
+            CategoryDetailsForm cform = new CategoryDetailsForm();
+            cform.Show();
+            this.Hide();
         }
     }
 }
