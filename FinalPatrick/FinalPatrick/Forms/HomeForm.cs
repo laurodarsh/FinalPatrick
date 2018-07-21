@@ -81,14 +81,14 @@ namespace FinalPatrick.Forms
         {
             CategoryAllForm categoryAllForm = new CategoryAllForm();
             categoryAllForm.Show();
-            this.Hide();
+           
         }
 
         private void pbxProduct_Click(object sender, EventArgs e)
         {
             ProductAllForm productAllForm = new ProductAllForm();
             productAllForm.Show();
-            this.Hide();
+           
         }
 
         private void pbxUserProfile_Click(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace FinalPatrick.Forms
 
             UserProfileAllForm userProfileAllForm = new  UserProfileAllForm();
             userProfileAllForm.Show();
-            this.Hide();
+           
         }
 
         private void pbxLog_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace FinalPatrick.Forms
 
             LogForm logForm = new LogForm();
             logForm.Show();
-            this.Hide();
+            
         }
 
         private void pbxUser_Click(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace FinalPatrick.Forms
 
            UserAllForm userAllForm = new UserAllForm();
            userAllForm.Show();
-            this.Hide();
+           
         }
     }
 }
