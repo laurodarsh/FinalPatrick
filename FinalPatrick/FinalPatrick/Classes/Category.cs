@@ -65,6 +65,12 @@ namespace FinalPatrick.Classes
             this.Name = name;
             this.Active = active;
         }
-        
+
+        public Category( string name, bool active, int id)
+        {
+            this.id = id;
+            this.name = name;
+            this.active = active;
+        }
     }
 }

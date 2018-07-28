@@ -130,6 +130,7 @@
             this.pbxSave.Size = new System.Drawing.Size(45, 40);
             this.pbxSave.TabIndex = 18;
             this.pbxSave.TabStop = false;
+            this.pbxSave.Click += new System.EventHandler(this.pbxSave_Click);
             // 
             // tbxName
             // 
