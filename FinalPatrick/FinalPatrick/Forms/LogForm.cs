@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,9 @@ namespace FinalPatrick.Forms
         public LogForm()
         {
             InitializeComponent();
+
+            ShowData();
+            ResizeDataGridView();
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
@@ -25,6 +29,51 @@ namespace FinalPatrick.Forms
             HomeForm home = new HomeForm();
             home.Show();
             this.Hide();
+        }
+
+        private void ShowData()
+        {
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM LOG", sqlConnect);
+                // SqlDataReader reader = cmd.ExecuteReader();
+
+                cmd.ExecuteNonQuery();
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter sqlDtAdapter = new SqlDataAdapter(cmd);
+                sqlDtAdapter.Fill(dt);
+
+              dgvLog.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao conectar. " + ex.Message);
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+
+        private void ResizeDataGridView()
+        {
+            dgvLog.Columns["ID"].Visible = false;
+            dgvLog.Columns["DESCRIPTION"].HeaderText = "Descrição";
+            dgvLog.Columns["TYPE"].HeaderText = "Tipo";
+            dgvLog.Columns["DATE"].HeaderText = "Data";
+           
+
+            foreach (DataGridViewColumn col in dgvLog.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            }
         }
     }
 }

@@ -70,18 +70,17 @@
             this.lblCategory.Size = new System.Drawing.Size(69, 17);
             this.lblCategory.TabIndex = 1;
             this.lblCategory.Text = "Categoria";
-            this.lblCategory.Visible = false;
             // 
             // lblProduct
             // 
             this.lblProduct.AutoSize = true;
             this.lblProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblProduct.Location = new System.Drawing.Point(424, 116);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(58, 17);
             this.lblProduct.TabIndex = 3;
             this.lblProduct.Text = "Produto";
-            this.lblProduct.Visible = false;
             // 
             // pbxProduct
             // 
@@ -107,7 +106,6 @@
             this.lblLog.Size = new System.Drawing.Size(39, 17);
             this.lblLog.TabIndex = 5;
             this.lblLog.Text = "Logs";
-            this.lblLog.Visible = false;
             // 
             // pbxLog
             // 
@@ -132,7 +130,6 @@
             this.lblUserProfile.Size = new System.Drawing.Size(109, 16);
             this.lblUserProfile.TabIndex = 7;
             this.lblUserProfile.Text = "Perfil De Usuário";
-            this.lblUserProfile.Visible = false;
             // 
             // pbxUserProfile
             // 
@@ -158,7 +155,6 @@
             this.lblUser.Size = new System.Drawing.Size(57, 17);
             this.lblUser.TabIndex = 9;
             this.lblUser.Text = "Usuario";
-            this.lblUser.Visible = false;
             // 
             // pbxUser
             // 

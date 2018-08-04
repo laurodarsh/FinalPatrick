@@ -19,84 +19,84 @@ namespace FinalPatrick.Forms
 
         private void pbxCategory_MouseEnter(object sender, EventArgs e)
         {
-            pbxCategory.BackColor = Color.CadetBlue;
-            lblCategory.Visible = true;
+            pbxCategory.BackColor = Color.White;
+          
         }
 
         private void pbxCategory_MouseLeave(object sender, EventArgs e)
         {
-            pbxCategory.BackColor = Color.Transparent;
-            lblCategory.Visible = false;
+            pbxCategory.BackColor = Color.White;
+           
         }
 
         private void pbxProduct_MouseEnter(object sender, EventArgs e)
         {
-            pbxProduct.BackColor = Color.CadetBlue;
-            lblProduct.Visible = true;
+            pbxProduct.BackColor = Color.White;
+          
         }
 
         private void pbxProduct_MouseLeave(object sender, EventArgs e)
         {
-            pbxProduct.BackColor = Color.Transparent;
-            lblProduct.Visible = false;
+            pbxProduct.BackColor = Color.White;
+            
         }
 
         private void pbxUserProfire_MouseEnter(object sender, EventArgs e)
         {
-            pbxUserProfile.BackColor = Color.CadetBlue;
-            lblUserProfile.Visible = true;
+            pbxUserProfile.BackColor = Color.White;
+          
         }
 
         private void pbxUserProfire_MouseLeave(object sender, EventArgs e)
         {
-            pbxUserProfile.BackColor = Color.Transparent;
-            lblUserProfile.Visible = false;
+            pbxUserProfile.BackColor = Color.White;
+           
         }
 
         private void pbxLog_MouseEnter(object sender, EventArgs e)
         {
-            pbxLog.BackColor = Color.CadetBlue;
-            lblLog.Visible = true;
+            pbxLog.BackColor = Color.White;
+           
         }
 
         private void pbxLog_MouseLeave(object sender, EventArgs e)
         {
-            pbxLog.BackColor = Color.Transparent;
-            lblLog.Visible = false;
+            pbxLog.BackColor = Color.White;
+            
         }
 
         private void pbxUser_MouseEnter(object sender, EventArgs e)
         {
-            pbxUser.BackColor = Color.CadetBlue;
-            lblUser.Visible = true;
+            pbxUser.BackColor = Color.White;
+            
         }
 
         private void pbxUser_MouseLeave(object sender, EventArgs e)
         {
-            pbxUser.BackColor = Color.Transparent;
-            lblUser.Visible = false;
+            pbxUser.BackColor = Color.White;
+         
         }
 
         private void pbxCategory_Click(object sender, EventArgs e)
         {
             CategoryAllForm categoryAllForm = new CategoryAllForm();
             categoryAllForm.Show();
-           
+
         }
 
         private void pbxProduct_Click(object sender, EventArgs e)
         {
             ProductAllForm productAllForm = new ProductAllForm();
             productAllForm.Show();
-           
+
         }
 
         private void pbxUserProfile_Click(object sender, EventArgs e)
         {
 
-            UserProfileAllForm userProfileAllForm = new  UserProfileAllForm();
+            UserProfileAllForm userProfileAllForm = new UserProfileAllForm();
             userProfileAllForm.Show();
-           
+
         }
 
         private void pbxLog_Click(object sender, EventArgs e)
@@ -104,15 +104,17 @@ namespace FinalPatrick.Forms
 
             LogForm logForm = new LogForm();
             logForm.Show();
-            
+
         }
 
         private void pbxUser_Click(object sender, EventArgs e)
         {
 
-           UserAllForm userAllForm = new UserAllForm();
-           userAllForm.Show();
-           
+            UserAllForm userAllForm = new UserAllForm();
+            userAllForm.Show();
+
         }
+
+       
     }
 }
