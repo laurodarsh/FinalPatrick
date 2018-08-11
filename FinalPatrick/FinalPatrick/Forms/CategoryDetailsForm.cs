@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPatrick.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +27,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            CategoryAllForm cal = new CategoryAllForm();
-            cal.Show();
+           
             this.Hide();
         }
 
@@ -62,6 +62,8 @@ namespace FinalPatrick.Forms
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Adicionado com sucesso!");
+
+                Log.SaveLog ("Categoria Adicionada" , "Adição",DateTime.Now);
 
                 CleanData();
 

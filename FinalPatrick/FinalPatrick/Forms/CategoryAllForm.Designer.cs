@@ -37,6 +37,7 @@
             this.pbxEdit = new System.Windows.Forms.PictureBox();
             this.pbxDelete = new System.Windows.Forms.PictureBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
+            this.btnClean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAdd)).BeginInit();
@@ -73,6 +74,7 @@
             this.pbxSearch.Size = new System.Drawing.Size(40, 25);
             this.pbxSearch.TabIndex = 2;
             this.pbxSearch.TabStop = false;
+            this.pbxSearch.Click += new System.EventHandler(this.pbxSearch_Click);
             // 
             // dgvCategory
             // 
@@ -139,12 +141,24 @@
             this.pbxBack.TabStop = false;
             this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
             // 
+            // btnClean
+            // 
+            this.btnClean.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClean.BackgroundImage")));
+            this.btnClean.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClean.Location = new System.Drawing.Point(324, 20);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(36, 31);
+            this.btnClean.TabIndex = 25;
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // CategoryAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.btnClean);
             this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxEdit);
@@ -176,5 +190,6 @@
         private System.Windows.Forms.PictureBox pbxEdit;
         private System.Windows.Forms.PictureBox pbxDelete;
         private System.Windows.Forms.PictureBox pbxBack;
+        private System.Windows.Forms.Button btnClean;
     }
 }

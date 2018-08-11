@@ -64,8 +64,7 @@ namespace FinalPatrick.Forms
 
         private void pbxback_Click(object sender, EventArgs e)
         {
-            ProductAllForm home = new ProductAllForm();
-            home.Show();
+           
             this.Hide();
         }
         void GetData()
@@ -102,6 +101,8 @@ namespace FinalPatrick.Forms
 
                 MessageBox.Show("Adicionado com sucesso!");
                 CleanData();
+
+                Log.SaveLog("Produto Adicionado", "Adição", DateTime.Now);
 
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPatrick.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +27,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm home = new HomeForm();
-            home.Show();
+           
             this.Hide();
         }
 
@@ -82,6 +82,22 @@ namespace FinalPatrick.Forms
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 col.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
             }
+        }
+
+        private void pbxSearch_Click_1(object sender, EventArgs e)
+        {
+            string optionForm = "ProductForm";
+            string optionString = "name";
+
+            Search search = new Search();
+            dgvProduct.DataSource = search.SearchFilter(connectionString, tbxSearch.Text, optionString, optionForm);
+
+            tbxSearch.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowData();
         }
     }
 }

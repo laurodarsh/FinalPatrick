@@ -64,8 +64,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            UserAllForm home = new UserAllForm();
-            home.Show();
+            
             this.Hide();
         }
         void GetData()
@@ -102,7 +101,7 @@ namespace FinalPatrick.Forms
                     SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
                     cmd.Parameters.Add(new SqlParameter("@name", name));
-                    cmd.Parameters.Add(new SqlParameter("@password", password));
+                    cmd.Parameters.Add(new SqlParameter("@password",UserHelper.Hash(password)));
                     cmd.Parameters.Add(new SqlParameter("@email", email));
                     cmd.Parameters.Add(new SqlParameter("@active", active));
                     cmd.Parameters.Add(new SqlParameter("@profile", ((UserProfile)cmbProfile.SelectedItem).Id));
@@ -110,6 +109,9 @@ namespace FinalPatrick.Forms
 
                     MessageBox.Show("Adicionado com sucesso!");
                     CleanData();
+
+                    Log.SaveLog("Usuário Adicionado", "Adição", DateTime.Now);
+
                 }
                 else
                 {

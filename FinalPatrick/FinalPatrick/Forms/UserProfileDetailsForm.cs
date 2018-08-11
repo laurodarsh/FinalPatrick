@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPatrick.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +29,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            UserProfileAllForm home = new UserProfileAllForm();
-            home.Show();
+
             this.Hide();
         }
         void GetData()
@@ -64,9 +64,9 @@ namespace FinalPatrick.Forms
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Adicionado com sucesso!");
-
                 CleanData();
 
+                Log.SaveLog("Perfil Adicionado", "Adição", DateTime.Now);
 
             }
             catch (Exception ex)

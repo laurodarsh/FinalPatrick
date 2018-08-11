@@ -37,6 +37,7 @@
             this.pbxSearch = new System.Windows.Forms.PictureBox();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.btnClean = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEdit)).BeginInit();
@@ -120,6 +121,7 @@
             this.pbxSearch.Size = new System.Drawing.Size(40, 25);
             this.pbxSearch.TabIndex = 18;
             this.pbxSearch.TabStop = false;
+            this.pbxSearch.Click += new System.EventHandler(this.pbxSearch_Click);
             // 
             // tbxSearch
             // 
@@ -139,11 +141,23 @@
             this.lblSearch.TabIndex = 16;
             this.lblSearch.Text = "Pesquisar";
             // 
+            // btnClean
+            // 
+            this.btnClean.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClean.BackgroundImage")));
+            this.btnClean.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClean.Location = new System.Drawing.Point(321, 17);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(36, 31);
+            this.btnClean.TabIndex = 24;
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // UserProfileAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.btnClean);
             this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxEdit);
@@ -175,5 +189,6 @@
         private System.Windows.Forms.PictureBox pbxSearch;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Button btnClean;
     }
 }

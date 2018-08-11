@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalPatrick.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,8 +28,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            HomeForm home = new HomeForm();
-            home.Show();
+           
             this.Hide();
         }
 
@@ -84,6 +84,20 @@ namespace FinalPatrick.Forms
 
         }
 
-       
+        private void pbxSearch_Click(object sender, EventArgs e)
+        {
+            string optionForm = "CategoryForm";
+            string optionString = "name";
+
+            Search search = new Search();
+            dgvCategory.DataSource = search.SearchFilter(connectionString, tbxSearch.Text, optionString, optionForm);
+
+            tbxSearch.Text = "";
+        }
+
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            ShowData();
+        }
     }
 }
