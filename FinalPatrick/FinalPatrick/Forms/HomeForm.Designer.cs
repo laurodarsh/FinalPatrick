@@ -39,6 +39,7 @@
             this.pbxUserProfile = new System.Windows.Forms.PictureBox();
             this.lblUser = new System.Windows.Forms.Label();
             this.pbxUser = new System.Windows.Forms.PictureBox();
+            this.lbluserOn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLog)).BeginInit();
@@ -170,12 +171,21 @@
             this.pbxUser.MouseEnter += new System.EventHandler(this.pbxUser_MouseEnter);
             this.pbxUser.MouseLeave += new System.EventHandler(this.pbxUser_MouseLeave);
             // 
+            // lbluserOn
+            // 
+            this.lbluserOn.AutoSize = true;
+            this.lbluserOn.Location = new System.Drawing.Point(12, 9);
+            this.lbluserOn.Name = "lbluserOn";
+            this.lbluserOn.Size = new System.Drawing.Size(0, 13);
+            this.lbluserOn.TabIndex = 10;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.lbluserOn);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.pbxUser);
             this.Controls.Add(this.lblUserProfile);
@@ -211,5 +221,6 @@
         private System.Windows.Forms.PictureBox pbxUserProfile;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pbxUser;
+        private System.Windows.Forms.Label lbluserOn;
     }
 }

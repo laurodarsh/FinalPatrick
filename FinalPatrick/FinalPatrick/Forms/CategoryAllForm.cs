@@ -15,12 +15,13 @@ namespace FinalPatrick.Forms
     public partial class CategoryAllForm : Form
     {
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
+        User aux = new User();
 
-
-        public CategoryAllForm()
+        public CategoryAllForm( User user )
         {
             InitializeComponent();
 
+            aux = user;
             ShowData();
             ResizeDataGridView();
 
@@ -40,15 +41,24 @@ namespace FinalPatrick.Forms
         }
         private void ShowData()
         {
+        
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
             try
             {
+                SqlCommand cmd;
                 sqlConnect.Open();
+                if (aux.UserProfile.Id != 3)
+                {
+                    cmd = new SqlCommand("SELECT * FROM CATEGORY WHERE ACTIVE = @active", sqlConnect);
+                    cmd.Parameters.Add(new SqlParameter("@active", true));
+                }
+                else
+                {
+                    cmd = new SqlCommand("SELECT * FROM CATEGORY", sqlConnect);
+                }
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM CATEGORY", sqlConnect);
-                // SqlDataReader reader = cmd.ExecuteReader();
-
+                
                 cmd.ExecuteNonQuery();
 
                 DataTable dt = new DataTable();

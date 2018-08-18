@@ -40,11 +40,12 @@ namespace FinalPatrick.Forms
             {
                 cn.Open();
                 SqlCommand sqlCommand = new SqlCommand("SELECT * FROM USER_PROFILE", cn);
-
+                int id;
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    UserProfile u = new UserProfile(reader["NAME"].ToString(), bool.Parse(reader["ACTIVE"].ToString()), Int32.Parse(reader["ID"].ToString()));
+                    id = Int32.Parse(reader["ID"].ToString());
+                    UserProfile u = new UserProfile(reader["NAME"].ToString(), bool.Parse(reader["ACTIVE"].ToString()), id);
                     profiles.Add(u);
                 }
             }

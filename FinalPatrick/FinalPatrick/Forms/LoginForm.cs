@@ -15,11 +15,12 @@ namespace FinalPatrick.Forms
     {
         string name = "";
         string password = "";
+        User aux = new User();
 
         public LoginForm()
         {
             InitializeComponent();
-            
+
         }
 
         void GetData()
@@ -35,11 +36,27 @@ namespace FinalPatrick.Forms
             tbxPassword.Text = "";
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private bool CheckLogin(string password, string name)
         {
-            if (CheckLogin(password, Name))
+            User user = UserHelper.SelectByName(name);
+
+            if (user != null)
             {
-                HomeForm mainForm = new HomeForm();
+                if (UserHelper.Hash(password) == user.Password)
+                {
+                    aux = user;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
+        {
+            GetData();
+            if (CheckLogin(password, name))
+            {
+                HomeForm mainForm = new HomeForm(aux);
                 mainForm.Show();
                 this.Hide();
             }
@@ -50,19 +67,9 @@ namespace FinalPatrick.Forms
             }
         }
 
-       
-        private bool CheckLogin(string password, string name)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            User user = UserHelper.SelectByName(name);
 
-            if (user != null)
-            {
-                if (UserHelper.Hash(password) == user.Password)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
