@@ -47,8 +47,7 @@ namespace FinalPatrick.Forms
                 sqlConnect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM  USER_PROFILE", sqlConnect);
-                // SqlDataReader reader = cmd.ExecuteReader();
-
+               
                 cmd.ExecuteNonQuery();
 
                 DataTable dt = new DataTable();
@@ -97,6 +96,48 @@ namespace FinalPatrick.Forms
         private void btnClean_Click(object sender, EventArgs e)
         {
             ShowData();
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idUserProfile = Int32.Parse(dgvUserProfile.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE USER_PROFILE SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idUserProfile));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Perfil de Usuario inativo!");
+                Log.SaveLog("Perfil de Usuario Excluido", "Exclusão", DateTime.Now);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao Excluir este Perfil!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+
+        private void pbxEdit_Click(object sender, EventArgs e)
+        {
+            int idUserProfile = Int32.Parse(dgvUserProfile.SelectedRows[0].Cells[0].Value.ToString());
+
+           UserProfileDetailsForm UserProfileDetails = new UserProfileDetailsForm(idUserProfile);
+            UserProfileDetails.Show();
+
+            this.Close();
         }
     }
 }

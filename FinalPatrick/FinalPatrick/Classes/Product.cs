@@ -12,6 +12,7 @@ namespace FinalPatrick.Classes
         private string name;
         private float price;
         private bool active;
+        private Category category;
 
         public int Id
         {
@@ -62,6 +63,19 @@ namespace FinalPatrick.Classes
             set
             {
                 active = value;
+            }
+        }
+
+        public Category Category
+        {
+            get
+            {
+                return category;
+            }
+
+            set
+            {
+                category = value;
             }
         }
 

@@ -40,6 +40,7 @@
             this.tbxName = new System.Windows.Forms.TextBox();
             this.tbxPrice = new System.Windows.Forms.TextBox();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.lblId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxback)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).BeginInit();
@@ -118,6 +119,7 @@
             this.pbxDelete.Size = new System.Drawing.Size(45, 40);
             this.pbxDelete.TabIndex = 17;
             this.pbxDelete.TabStop = false;
+            this.pbxDelete.Click += new System.EventHandler(this.pbxDelete_Click);
             // 
             // pbxSave
             // 
@@ -154,12 +156,22 @@
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
             this.cmbCategory.TabIndex = 21;
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(292, 159);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 13);
+            this.lblId.TabIndex = 31;
+            this.lblId.Visible = false;
+            // 
             // ProductDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.tbxPrice);
             this.Controls.Add(this.tbxName);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.TextBox tbxName;
         private System.Windows.Forms.TextBox tbxPrice;
         private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label lblId;
     }
 }

@@ -100,5 +100,37 @@ namespace FinalPatrick.Forms
         {
             ShowData();
         }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idUser = Int32.Parse(dgvUser.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE USER SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idUser));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Usuario inativo!");
+                Log.SaveLog("Usuario Excluido", "Exclusão", DateTime.Now);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao Excluir este Usuario!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
     }
 }

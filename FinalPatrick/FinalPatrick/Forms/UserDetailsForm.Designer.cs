@@ -44,6 +44,7 @@
             this.cmbProfile = new System.Windows.Forms.ComboBox();
             this.cbxActive = new System.Windows.Forms.CheckBox();
             this.cmbActive = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).BeginInit();
@@ -155,6 +156,7 @@
             // 
             this.tbxpassword.Location = new System.Drawing.Point(147, 83);
             this.tbxpassword.Name = "tbxpassword";
+            this.tbxpassword.PasswordChar = '*';
             this.tbxpassword.Size = new System.Drawing.Size(100, 20);
             this.tbxpassword.TabIndex = 28;
             // 
@@ -162,6 +164,7 @@
             // 
             this.tbxConfirmPassword.Location = new System.Drawing.Point(147, 112);
             this.tbxConfirmPassword.Name = "tbxConfirmPassword";
+            this.tbxConfirmPassword.PasswordChar = '*';
             this.tbxConfirmPassword.Size = new System.Drawing.Size(100, 20);
             this.tbxConfirmPassword.TabIndex = 29;
             // 
@@ -192,12 +195,22 @@
             this.cmbActive.TabIndex = 32;
             this.cmbActive.Text = "Ativo :";
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(292, 159);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 13);
+            this.lblId.TabIndex = 33;
+            this.lblId.Visible = false;
+            // 
             // UserDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.cbxActive);
             this.Controls.Add(this.cmbProfile);
@@ -240,5 +253,6 @@
         private System.Windows.Forms.ComboBox cmbProfile;
         private System.Windows.Forms.CheckBox cbxActive;
         private System.Windows.Forms.Label cmbActive;
+        private System.Windows.Forms.Label lblId;
     }
 }

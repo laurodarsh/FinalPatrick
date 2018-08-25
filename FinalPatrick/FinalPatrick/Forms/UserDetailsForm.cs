@@ -116,7 +116,7 @@ namespace FinalPatrick.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Senhas Informadas são Diferentes ");
+                    MessageBox.Show("Senhas Informadas são diferentes ");
                 }
             }
             catch (Exception ex)

@@ -17,7 +17,7 @@ namespace FinalPatrick.Forms
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
         User aux = new User();
 
-        public CategoryAllForm( User user )
+        public CategoryAllForm(User user)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-           
+
             this.Hide();
         }
 
@@ -41,7 +41,7 @@ namespace FinalPatrick.Forms
         }
         private void ShowData()
         {
-        
+
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
             try
@@ -58,7 +58,7 @@ namespace FinalPatrick.Forms
                     cmd = new SqlCommand("SELECT * FROM CATEGORY", sqlConnect);
                 }
 
-                
+
                 cmd.ExecuteNonQuery();
 
                 DataTable dt = new DataTable();
@@ -83,8 +83,8 @@ namespace FinalPatrick.Forms
             dgvCategory.Columns["ID"].Visible = false;
             dgvCategory.Columns["NAME"].HeaderText = "Nome";
             dgvCategory.Columns["ACTIVE"].HeaderText = "Ativo";
-           
-          
+
+
 
             foreach (DataGridViewColumn col in dgvCategory.Columns)
             {
@@ -109,5 +109,50 @@ namespace FinalPatrick.Forms
         {
             ShowData();
         }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idCategory = Int32.Parse(dgvCategory.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE CATEGORY SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idCategory));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Categoria inativo!");
+                Log.SaveLog("Categoria Excluida", "Exclusão", DateTime.Now);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao Excluir esta Categoria!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+
+        }
+
+        private void pbxEdit_Click(object sender, EventArgs e)
+        {
+
+            int idCategory = Int32.Parse(dgvCategory.SelectedRows[0].Cells[0].Value.ToString());
+
+            CategoryDetailsForm categoryDetails = new CategoryDetailsForm(idCategory, aux);
+            categoryDetails.Show();
+
+            this.Close();
+        }
     }
+
 }

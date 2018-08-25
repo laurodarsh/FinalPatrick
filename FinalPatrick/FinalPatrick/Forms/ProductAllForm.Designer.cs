@@ -70,6 +70,7 @@
             this.pbxDelete.Size = new System.Drawing.Size(45, 40);
             this.pbxDelete.TabIndex = 14;
             this.pbxDelete.TabStop = false;
+            this.pbxDelete.Click += new System.EventHandler(this.pbxDelete_Click);
             // 
             // pbxEdit
             // 
@@ -82,6 +83,7 @@
             this.pbxEdit.Size = new System.Drawing.Size(45, 40);
             this.pbxEdit.TabIndex = 13;
             this.pbxEdit.TabStop = false;
+            this.pbxEdit.Click += new System.EventHandler(this.pbxEdit_Click);
             // 
             // pbxAdd
             // 

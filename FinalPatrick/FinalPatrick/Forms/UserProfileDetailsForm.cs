@@ -20,11 +20,54 @@ namespace FinalPatrick.Forms
 
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
 
-
-
         public UserProfileDetailsForm()
         {
             InitializeComponent();
+        }
+
+        public UserProfileDetailsForm(int idUserProfile)
+        {
+            InitializeComponent();
+            lblId.Text = idUserProfile.ToString();
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                try
+                {
+                    sqlConnect.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM USER_PROFILE WHERE ID = @id", sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", idUserProfile));
+
+                    UserProfile profile = new UserProfile();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            profile.Id = Int32.Parse(reader["ID"].ToString());
+                            profile.Name = reader["NAME"].ToString();
+                            profile.Active = bool.Parse(reader["ACTIVE"].ToString());
+                        }
+                    }
+
+                    tbxName.Text = profile.Name;
+                    cbxActive.Checked = profile.Active;
+
+                }
+                catch (Exception EX)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
+            }
+
         }
 
         private void pbxBack_Click(object sender, EventArgs e)
@@ -77,6 +120,39 @@ namespace FinalPatrick.Forms
             finally
             {
                 sqlConnect.Close();
+            }
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                try
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE USER_PROFILE SET ACTIVE = @active WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", lblId.Text));
+                    cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Perfil inativo!");
+                    Log.SaveLog("Perfil de Usuario Excluido", "Exclusão", DateTime.Now);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao desativar este Perfil!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
             }
         }
     }

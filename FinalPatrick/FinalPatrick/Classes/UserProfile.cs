@@ -63,7 +63,7 @@ namespace FinalPatrick.Classes
             this.Name = name;
             this.Active = active;
         }
-        public UserProfile(string name, bool active, int Id)
+        public UserProfile(string name, bool active, int id)
         {
 
             this.Name = name;

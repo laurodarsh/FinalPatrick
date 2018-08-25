@@ -33,7 +33,7 @@ namespace FinalPatrick.Forms
 
         private void pbxAdd_Click(object sender, EventArgs e)
         {
-            ProductDetailsForm cprod = new ProductDetailsForm();
+            ProductDetailsForm cprod = new ProductDetailsForm(aux);
             cprod.Show();
             this.Hide();
         }
@@ -105,6 +105,50 @@ namespace FinalPatrick.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             ShowData();
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            int idProduct = Int32.Parse(dgvProduct.SelectedRows[0].Cells[0].Value.ToString());
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            try
+            {
+                sqlConnect.Open();
+                string sql = "UPDATE PRODUCT SET ACTIVE = @active WHERE ID = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                cmd.Parameters.Add(new SqlParameter("@id", idProduct));
+                cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Produto inativo!");
+
+                Log.SaveLog("Produto Excluido", "Exclusão", DateTime.Now);
+
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Erro ao Excluir este produto!" + "\n\n" + Ex.Message);
+                throw;
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+
+        private void pbxEdit_Click(object sender, EventArgs e)
+        {
+            int idProduct = Int32.Parse(dgvProduct.SelectedRows[0].Cells[0].Value.ToString());
+
+            ProductDetailsForm ProductDetails = new ProductDetailsForm(idProduct, aux);
+            ProductDetails.Show();
+
+            this.Close();
         }
     }
 }

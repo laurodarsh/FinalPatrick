@@ -95,25 +95,25 @@ namespace FinalPatrick.Classes
                 }
             }
 
-            //MySqlConnection sqlConnect = new MySqlConnection(connectionString);
+          
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
             try
             {
                 sqlConnect.Open();
 
-                //MySqlCommand cmd = new MySqlCommand(optionString, sqlConnect);
+            
                 SqlCommand cmd = new SqlCommand(optionString, sqlConnect);
 
 
 
 
-                //cmd.Parameters.Add(new MySqlParameter("@value", "%" + parameter + "%")); //o percent duplo funciona na consulta sql com o like trazendo todas as ocorrencias da letra ou palavra digitada 
-                cmd.Parameters.Add(new SqlParameter("@value", "%" + parameter + "%")); //o percent duplo funciona na consulta sql com o like trazendo todas as ocorrencias da letra ou palavra digitada 
+             
+                cmd.Parameters.Add(new SqlParameter("@value", "%" + parameter + "%"));
                 cmd.ExecuteNonQuery();
 
                 DataTable dt = new DataTable();
-                //MySqlDataAdapter sqlDtAdapter = new MySqlDataAdapter(cmd);
+               
                 SqlDataAdapter sqlDtAdapter = new SqlDataAdapter(cmd);
                 sqlDtAdapter.Fill(dt);
 
@@ -127,7 +127,7 @@ namespace FinalPatrick.Classes
             }
             finally
             {
-                //Fechar
+             
                 sqlConnect.Close();
             }
         }

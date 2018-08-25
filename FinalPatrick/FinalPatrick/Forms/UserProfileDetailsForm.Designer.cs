@@ -33,9 +33,10 @@
             this.pbxSave = new System.Windows.Forms.PictureBox();
             this.pbxBack = new System.Windows.Forms.PictureBox();
             this.tbxName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblActive = new System.Windows.Forms.Label();
             this.cbxActive = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
@@ -52,6 +53,7 @@
             this.pbxDelete.Size = new System.Drawing.Size(45, 40);
             this.pbxDelete.TabIndex = 29;
             this.pbxDelete.TabStop = false;
+            this.pbxDelete.Click += new System.EventHandler(this.pbxDelete_Click);
             // 
             // pbxSave
             // 
@@ -86,15 +88,15 @@
             this.tbxName.Size = new System.Drawing.Size(100, 20);
             this.tbxName.TabIndex = 26;
             // 
-            // label2
+            // lblActive
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 24);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Ativo";
+            this.lblActive.AutoSize = true;
+            this.lblActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActive.Location = new System.Drawing.Point(9, 77);
+            this.lblActive.Name = "lblActive";
+            this.lblActive.Size = new System.Drawing.Size(51, 24);
+            this.lblActive.TabIndex = 25;
+            this.lblActive.Text = "Ativo";
             // 
             // cbxActive
             // 
@@ -105,15 +107,24 @@
             this.cbxActive.TabIndex = 24;
             this.cbxActive.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 24);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Nome";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(9, 47);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(62, 24);
+            this.lblName.TabIndex = 23;
+            this.lblName.Text = "Nome";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(9, 134);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 13);
+            this.lblId.TabIndex = 30;
+            this.lblId.Visible = false;
             // 
             // UserProfileDetailsForm
             // 
@@ -121,13 +132,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.pbxDelete);
             this.Controls.Add(this.pbxSave);
             this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.tbxName);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblActive);
             this.Controls.Add(this.cbxActive);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblName);
             this.Name = "UserProfileDetailsForm";
             this.Text = "Categoria";
             ((System.ComponentModel.ISupportInitialize)(this.pbxDelete)).EndInit();
@@ -144,8 +156,9 @@
         private System.Windows.Forms.PictureBox pbxSave;
         private System.Windows.Forms.PictureBox pbxBack;
         private System.Windows.Forms.TextBox tbxName;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblActive;
         private System.Windows.Forms.CheckBox cbxActive;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblId;
     }
 }

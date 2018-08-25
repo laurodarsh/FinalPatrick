@@ -16,18 +16,70 @@ namespace FinalPatrick.Forms
     {
         string name = "";
         bool active = false;
+        User aux;
 
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
-        
 
         public CategoryDetailsForm()
         {
             InitializeComponent();
         }
 
+        public CategoryDetailsForm(int idCategory, User user)
+
+        {
+            InitializeComponent();
+            aux = user;
+            lblId.Text = idCategory.ToString();
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                try
+                {
+
+                    sqlConnect.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM CATEGORY WHERE ID = @id", sqlConnect);
+
+
+                    cmd.Parameters.Add(new SqlParameter("@id", idCategory));
+
+                    Category category = new Category();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            category.Id = Int32.Parse(reader["ID"].ToString());
+                            category.Name = reader["NAME"].ToString();
+                            category.Active = bool.Parse(reader["ACTIVE"].ToString());
+
+                        }
+                    }
+
+                    tbxName.Text = category.Name;
+                    cbxActive.Checked = category.Active;
+
+                }
+                catch (Exception EX)
+                {
+
+                    throw;
+                }
+                finally
+                {
+
+                    sqlConnect.Close();
+                }
+            }
+
+        }
+
         private void pbxBack_Click(object sender, EventArgs e)
         {
-           
+
             this.Hide();
         }
 
@@ -63,7 +115,7 @@ namespace FinalPatrick.Forms
 
                 MessageBox.Show("Adicionado com sucesso!");
 
-                Log.SaveLog ("Categoria Adicionada" , "Adição",DateTime.Now);
+                Log.SaveLog("Categoria Adicionada", "Adição", DateTime.Now);
 
                 CleanData();
 
@@ -77,6 +129,41 @@ namespace FinalPatrick.Forms
             finally
             {
                 sqlConnect.Close();
+            }
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                try
+
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE CATEGORY SET ACTIVE = @active WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", lblActive.Text));
+                    cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("categoria inativa!");
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao desativar esta categoria!" + "\n\n" + Ex.Message);
+                    throw;
+                    Log.SaveLog("Categoria Excluida", "Exclusão", DateTime.Now);
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
             }
         }
     }
