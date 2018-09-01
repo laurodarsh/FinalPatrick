@@ -205,8 +205,8 @@ namespace FinalPatrick.Forms
                 finally
                 {
                     sqlConnect.Close();
-                    UserProfileAllForm userProfileAll = new UserProfileAllForm();
-                    userProfileAll.Show();
+                   ProductAllForm productAllForm = new ProductAllForm(aux);
+                    productAllForm.Show();
                     this.Hide();
                 }
             }
