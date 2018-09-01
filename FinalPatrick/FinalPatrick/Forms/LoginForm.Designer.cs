@@ -72,7 +72,7 @@
             this.tbxName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tbxName.Location = new System.Drawing.Point(338, 90);
             this.tbxName.Name = "tbxName";
-            this.tbxName.Size = new System.Drawing.Size(426, 19);
+            this.tbxName.Size = new System.Drawing.Size(384, 19);
             this.tbxName.TabIndex = 1;
             // 
             // lblUsuario
@@ -105,13 +105,13 @@
             this.tbxPassword.Location = new System.Drawing.Point(338, 199);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
-            this.tbxPassword.Size = new System.Drawing.Size(426, 19);
+            this.tbxPassword.Size = new System.Drawing.Size(384, 19);
             this.tbxPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
             this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.btnLogin.Location = new System.Drawing.Point(430, 268);
+            this.btnLogin.Location = new System.Drawing.Point(408, 241);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(222, 35);
             this.btnLogin.TabIndex = 3;
@@ -135,7 +135,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Location = new System.Drawing.Point(476, 317);
+            this.linkLabel1.Location = new System.Drawing.Point(466, 301);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(107, 15);
             this.linkLabel1.TabIndex = 6;
@@ -158,7 +158,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(878, 371);
+            this.ClientSize = new System.Drawing.Size(815, 371);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox2);

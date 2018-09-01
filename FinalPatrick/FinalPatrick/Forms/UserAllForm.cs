@@ -47,7 +47,7 @@ namespace FinalPatrick.Forms
                 sqlConnect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT [USER].ID ,[USER].NAME, [USER].EMAIL, [USER].ACTIVE, USER_PROFILE.NAME FROM [USER] INNER JOIN USER_PROFILE ON [USER].FK_USERPROFILE = USER_PROFILE.ID", sqlConnect);
-                // SqlDataReader reader = cmd.ExecuteReader();
+                
 
                 cmd.ExecuteNonQuery();
 
@@ -131,6 +131,17 @@ namespace FinalPatrick.Forms
             {
                 sqlConnect.Close();
             }
+        }
+
+        private void pbxEdit_Click(object sender, EventArgs e)
+        {
+
+            int idUser = Int32.Parse(dgvUser.SelectedRows[0].Cells[0].Value.ToString());
+
+            UserDetailsForm UserDetails = new UserDetailsForm(idUser);
+            UserDetails.Show();
+
+            this.Close();
         }
     }
 }

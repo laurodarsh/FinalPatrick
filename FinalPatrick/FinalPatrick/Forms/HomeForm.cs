@@ -28,7 +28,7 @@ namespace FinalPatrick.Forms
             }
             aux = user;
 
-            lbluserOn.Text = " Seja Bem Vindo " + user.Name;
+            lbluserOn.Text = "Seja Bem Vindo " + user.Name;
         }
 
         private void pbxCategory_MouseEnter(object sender, EventArgs e)

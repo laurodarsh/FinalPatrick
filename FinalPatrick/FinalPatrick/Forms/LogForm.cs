@@ -40,7 +40,7 @@ namespace FinalPatrick.Forms
                 sqlConnect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM LOG", sqlConnect);
-                // SqlDataReader reader = cmd.ExecuteReader();
+            
 
                 cmd.ExecuteNonQuery();
 

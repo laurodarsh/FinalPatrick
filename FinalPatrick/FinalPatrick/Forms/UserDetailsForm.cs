@@ -32,6 +32,56 @@ namespace FinalPatrick.Forms
             cmbProfile.DisplayMember = "NAME";
             LoadComboBox();
         }
+
+        public UserDetailsForm(int idUser)
+        {
+            InitializeComponent();
+            lblId.Text = idUser.ToString();
+
+            SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                try
+                {
+                    sqlConnect.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM [USER] WHERE ID = @id", sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", idUser));
+
+                    User user = new User();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            user.Id = Int32.Parse(reader["ID"].ToString());
+                            user.Name = reader["NAME"].ToString();
+                            user.Active = bool.Parse(reader["ACTIVE"].ToString());
+                            user.Email = reader["Email"].ToString();
+                            user.Password = reader["Password"].ToString();
+                        }
+                    }
+
+                    tbxName.Text = user.Name;
+                    cbxActive.Checked = user.Active;
+                    tbxEmail.Text = user.Email;
+                    tbxpassword.Text = user.Password;
+
+
+                }
+                catch (Exception EX)
+                {
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
+            }
+
+        }
         void LoadComboBox()
         {
             SqlConnection cn = new SqlConnection(connectionString);
@@ -65,7 +115,7 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
         }
         void GetData()
@@ -102,7 +152,7 @@ namespace FinalPatrick.Forms
                     SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
                     cmd.Parameters.Add(new SqlParameter("@name", name));
-                    cmd.Parameters.Add(new SqlParameter("@password",UserHelper.Hash(password)));
+                    cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(password)));
                     cmd.Parameters.Add(new SqlParameter("@email", email));
                     cmd.Parameters.Add(new SqlParameter("@active", active));
                     cmd.Parameters.Add(new SqlParameter("@profile", ((UserProfile)cmbProfile.SelectedItem).Id));
@@ -131,6 +181,40 @@ namespace FinalPatrick.Forms
             }
 
 
+        }
+
+        private void pbxDelete_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lblId.Text))
+            {
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                try
+                {
+                    sqlConnect.Open();
+                    string sql = "UPDATE [USER] SET ACTIVE = @active WHERE ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                    cmd.Parameters.Add(new SqlParameter("@id", lblId.Text));
+                    cmd.Parameters.Add(new SqlParameter("@active", false));
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Usuario inativo!");
+
+                    Log.SaveLog("Usuario Excluido", "Exclusão", DateTime.Now);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao desativar este Usuario!" + "\n\n" + Ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
+            }
         }
     }
 }
