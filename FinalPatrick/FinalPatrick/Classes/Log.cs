@@ -66,10 +66,7 @@ namespace FinalPatrick.Classes
             }
         }
 
-        //public int Id { get => id; set => id = value; }
-        //public string Description { get => description; set => description = value; }
-        //public DateTime Date { get => date; set => date = value; }
-        //public string Type { get => type; set => type = value; }
+      
 
         public Log(string description, DateTime dateTime, string type)
         {
@@ -87,11 +84,11 @@ namespace FinalPatrick.Classes
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
 
-            //Conectar
+           
             sqlConnect.Open();
             string sql = "INSERT INTO LOG (DESCRIPTION, TYPE, DATE) VALUES (@description, @type, @date)";
-            //string sql = "INSERT INTO CATEGORY(NAME, ACTIVE) VALUES (" 
-            //    + this.tbxName.Text + "," + this.cbxActive.Checked + ")";
+            
+            
 
             SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 

@@ -39,7 +39,7 @@ namespace FinalPatrick.Forms
             {
                 sqlConnect.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT * FROM LOG", sqlConnect);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM LOG ORDER BY city DESC ", sqlConnect);
             
 
                 cmd.ExecuteNonQuery();

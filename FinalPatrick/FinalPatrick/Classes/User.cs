@@ -94,13 +94,7 @@ namespace FinalPatrick.Classes
             }
         }
 
-        //    public int Id { get => id; set => id = value; }
-        //    public string Name { get => name; set => name = value; }
-        //    public string Password { get => password; set => password = value; }
-        //    public string Email { get => email; set => email = value; }
-        //    public UserProfile UserProfile { get => userProfile; set => userProfile = value; }
-        //    public bool Active { get => active; set => active = value; }
-        //
+       
         public User(string name, string password, string email,UserProfile user, bool active )
         {
 

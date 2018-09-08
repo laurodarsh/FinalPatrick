@@ -147,6 +147,7 @@
             // 
             this.btnClean.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClean.BackgroundImage")));
             this.btnClean.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClean.Location = new System.Drawing.Point(324, 20);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(36, 31);

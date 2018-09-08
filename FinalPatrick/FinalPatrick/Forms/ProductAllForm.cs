@@ -128,6 +128,7 @@ namespace FinalPatrick.Forms
                 MessageBox.Show("Produto inativo!");
 
                 Log.SaveLog("Produto Excluido", "Exclusão", DateTime.Now);
+                ShowData();
 
             }
             catch (Exception Ex)

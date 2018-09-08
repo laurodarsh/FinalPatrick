@@ -73,7 +73,10 @@ namespace FinalPatrick.Forms
         private void pbxBack_Click(object sender, EventArgs e)
         {
 
+            UserProfileAllForm UserprofForm = new UserProfileAllForm();
+            UserprofForm.Show();
             this.Hide();
+          
         }
         void GetData()
         {
@@ -113,6 +116,10 @@ namespace FinalPatrick.Forms
 
                     Log.SaveLog("Perfil Adicionado", "Adição", DateTime.Now);
 
+                    UserProfileAllForm userProfileAll = new UserProfileAllForm();
+                    userProfileAll.Show();
+                    this.Hide();
+
                 }
                 catch (Exception ex)
                 {
@@ -140,8 +147,12 @@ namespace FinalPatrick.Forms
                     cmd.Parameters.Add(new SqlParameter("@active", this.cbxActive.Checked));
 
                     cmd.ExecuteNonQuery();
-
+                    Log.SaveLog("Perfil Editado" , "Edição", DateTime.Now);
                     MessageBox.Show("Altereções salvas com sucesso!");
+
+                    UserProfileAllForm userProfileAll = new UserProfileAllForm();
+                    userProfileAll.Show();
+                    this.Hide();
                 }
                 catch (Exception Ex)
                 {
@@ -151,9 +162,7 @@ namespace FinalPatrick.Forms
                 finally
                 {
                     sqlConnect.Close();
-                    UserProfileAllForm userProfileAll = new UserProfileAllForm();
-                    userProfileAll.Show();
-                    this.Hide();
+                    
                 }
             }
         }
@@ -177,7 +186,10 @@ namespace FinalPatrick.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Perfil inativo!");
+
                     Log.SaveLog("Perfil de Usuario Excluido", "Exclusão", DateTime.Now);
+
+                    
                 }
                 catch (Exception Ex)
                 {

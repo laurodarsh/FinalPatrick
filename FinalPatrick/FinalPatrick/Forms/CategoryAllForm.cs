@@ -35,7 +35,7 @@ namespace FinalPatrick.Forms
 
         private void pbxAdd_Click(object sender, EventArgs e)
         {
-            CategoryDetailsForm cform = new CategoryDetailsForm();
+            CategoryDetailsForm cform = new CategoryDetailsForm(aux);
             cform.Show();
             this.Hide();
         }
@@ -108,6 +108,7 @@ namespace FinalPatrick.Forms
         private void btnClean_Click(object sender, EventArgs e)
         {
             ShowData();
+
         }
 
         private void pbxDelete_Click(object sender, EventArgs e)
@@ -130,6 +131,7 @@ namespace FinalPatrick.Forms
 
                 MessageBox.Show("Categoria inativo!");
                 Log.SaveLog("Categoria Excluida", "Exclusão", DateTime.Now);
+                ShowData();
             }
             catch (Exception Ex)
             {

@@ -20,9 +20,11 @@ namespace FinalPatrick.Forms
 
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
 
-        public CategoryDetailsForm()
+        public CategoryDetailsForm(User user)
         {
             InitializeComponent();
+            aux = user;
+            pbxDelete.Visible = false;
         }
 
         public CategoryDetailsForm(int idCategory, User user)
@@ -79,7 +81,9 @@ namespace FinalPatrick.Forms
 
         private void pbxBack_Click(object sender, EventArgs e)
         {
-
+            CategoryAllForm caf = new CategoryAllForm(aux);
+            caf.Show();
+          
             this.Hide();
         }
 
@@ -151,7 +155,8 @@ namespace FinalPatrick.Forms
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Altereções salvas com sucesso!");
+                    MessageBox.Show("Alterações salvas com sucesso!");
+                    Log.SaveLog("Categoria Editada ", "Edição", DateTime.Now);
                 }
                 catch (Exception Ex)
                 {
@@ -189,12 +194,18 @@ namespace FinalPatrick.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("categoria inativa!");
+                    Log.SaveLog("Categoria Excluida", "Exclusão", DateTime.Now);
+
+                    CategoryAllForm caf = new CategoryAllForm(aux);
+                    caf.Show();
+                    this.Hide();
+
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show("Erro ao desativar esta categoria!" + "\n\n" + Ex.Message);
                     throw;
-                    Log.SaveLog("Categoria Excluida", "Exclusão", DateTime.Now);
+                    
                 }
                 finally
                 {

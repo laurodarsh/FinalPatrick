@@ -121,7 +121,9 @@ namespace FinalPatrick.Forms
 
         private void pbxback_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           ProductAllForm produall = new ProductAllForm(aux);
+            produall.Show();
+             this.Hide();
         }
 
         void GetData()
@@ -164,6 +166,7 @@ namespace FinalPatrick.Forms
 
                     Log.SaveLog("Produto Adicionado", "Adição", DateTime.Now);
 
+
                 }
                 catch (Exception ex)
                 {
@@ -195,7 +198,12 @@ namespace FinalPatrick.Forms
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Altereções salvas com sucesso!");
+
                     Log.SaveLog("Produto Editado", "Edição", DateTime.Now);
+
+                    ProductAllForm productAllForm = new ProductAllForm(aux);
+                    productAllForm.Show();
+                    this.Hide();
                 }
                 catch (Exception Ex)
                 {
@@ -205,9 +213,7 @@ namespace FinalPatrick.Forms
                 finally
                 {
                     sqlConnect.Close();
-                   ProductAllForm productAllForm = new ProductAllForm(aux);
-                    productAllForm.Show();
-                    this.Hide();
+
                 }
             }
         }
@@ -231,6 +237,9 @@ namespace FinalPatrick.Forms
 
                     MessageBox.Show("Produto inativo!");
                     Log.SaveLog("Produto Excluido", "Exclusão", DateTime.Now);
+
+                    ProductAllForm produall = new ProductAllForm(aux);
+                    produall.Show();
                 }
                 catch (Exception Ex)
                 {

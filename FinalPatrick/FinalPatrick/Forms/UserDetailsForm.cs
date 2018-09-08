@@ -36,6 +36,8 @@ namespace FinalPatrick.Forms
         public UserDetailsForm(int idUser)
         {
             InitializeComponent();
+            cmbProfile.DisplayMember = "NAME";
+            LoadComboBox();
             lblId.Text = idUser.ToString();
 
             SqlConnection sqlConnect = new SqlConnection(connectionString);
@@ -68,8 +70,6 @@ namespace FinalPatrick.Forms
                     cbxActive.Checked = user.Active;
                     tbxEmail.Text = user.Email;
                     tbxpassword.Text = user.Password;
-
-
                 }
                 catch (Exception EX)
                 {
@@ -116,6 +116,10 @@ namespace FinalPatrick.Forms
         private void pbxBack_Click(object sender, EventArgs e)
         {
 
+            UserAllForm userall = new UserAllForm();
+            userall.Show();
+            
+
             this.Hide();
         }
         void GetData()
@@ -138,51 +142,100 @@ namespace FinalPatrick.Forms
 
         private void pbxSave_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnect = new SqlConnection(connectionString);
-            try
-            {
-                GetData();
+            if (tbxpassword.Text == tbxConfirmPassword.Text)
 
-                if (confpassword == password)
+                if (string.IsNullOrEmpty(lblId.Text))
                 {
+                    SqlConnection sqlConnect = new SqlConnection(connectionString);
+                    try
+                    {
+                        GetData();
 
-                    sqlConnect.Open();
-                    string sql = "INSERT INTO [USER] (NAME , PASSWORD , EMAIL , ACTIVE , FK_USERPROFILE) VALUES (@name, @password, @email , @active , @profile)";
+                        if (confpassword == password)
+                        {
 
-                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+                            sqlConnect.Open();
+                            string sql = "INSERT INTO [USER] (NAME , PASSWORD , EMAIL , ACTIVE , FK_USERPROFILE) VALUES (@name, @password, @email , @active , @profile)";
 
-                    cmd.Parameters.Add(new SqlParameter("@name", name));
-                    cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(password)));
-                    cmd.Parameters.Add(new SqlParameter("@email", email));
-                    cmd.Parameters.Add(new SqlParameter("@active", active));
-                    cmd.Parameters.Add(new SqlParameter("@profile", ((UserProfile)cmbProfile.SelectedItem).Id));
-                    cmd.ExecuteNonQuery();
+                            SqlCommand cmd = new SqlCommand(sql, sqlConnect);
 
-                    MessageBox.Show("Adicionado com sucesso!");
-                    CleanData();
+                            cmd.Parameters.Add(new SqlParameter("@name", name));
+                            cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(password)));
+                            cmd.Parameters.Add(new SqlParameter("@email", email));
+                            cmd.Parameters.Add(new SqlParameter("@active", active));
+                            cmd.Parameters.Add(new SqlParameter("@profile", ((UserProfile)cmbProfile.SelectedItem).Id));
+                            cmd.ExecuteNonQuery();
 
-                    Log.SaveLog("Usuário Adicionado", "Adição", DateTime.Now);
+                            MessageBox.Show("Adicionado com sucesso!");
+                            CleanData();
 
+                            Log.SaveLog("Usuário Adicionado", "Adição", DateTime.Now);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Senhas Informadas são diferentes ");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao adicionar Usuário!" + ex.Message);
+                        CleanData();
+                    }
+                    finally
+
+                    {
+                        sqlConnect.Close();
+
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Senhas Informadas são diferentes ");
+                    SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                    try
+                    {
+                        GetData();
+
+
+                        sqlConnect.Open();
+                        string sql = "UPDATE [USER] SET NAME = @name,PASSWORD = @password , EMAIL = @email , ACTIVE = @active , FK_USERPROFILE = @fkuserprofile Where ID = @id";
+
+                        SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+
+                        cmd.Parameters.Add(new SqlParameter("@name", name));
+                        cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash(password)));
+                        cmd.Parameters.Add(new SqlParameter("@email", email));
+                        cmd.Parameters.Add(new SqlParameter("@active", active));
+                        cmd.Parameters.Add(new SqlParameter("@fkuserprofile", ((UserProfile)cmbProfile.SelectedItem).Id));
+                        cmd.Parameters.Add(new SqlParameter("@id", this.lblId.Text));
+                        cmd.ExecuteNonQuery();
+
+
+                        MessageBox.Show("Alterações salvas com sucesso!");
+                        Log.SaveLog("Usuário Editado", "Edição", DateTime.Now);
+
+                        UserAllForm UserAllForm = new UserAllForm();
+                        UserAllForm.Show();
+                        this.Hide();
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show("Erro ao editar esté Usuario!" + "\n\n" + Ex.Message);
+                        throw;
+                    }
+                    finally
+                    {
+                        sqlConnect.Close();
+
+                       
+                    }
                 }
-            }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Erro ao adicionar Usuário!" + ex.Message);
-                CleanData();
+                MessageBox.Show("As Senhas não coincidem");
             }
-            finally
-            {
-                sqlConnect.Close();
-
-            }
-
-
         }
-
         private void pbxDelete_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(lblId.Text))
@@ -204,6 +257,10 @@ namespace FinalPatrick.Forms
                     MessageBox.Show("Usuario inativo!");
 
                     Log.SaveLog("Usuario Excluido", "Exclusão", DateTime.Now);
+
+                    UserAllForm UserAllForm = new UserAllForm();
+                    UserAllForm.Show();
+                    this.Hide();
                 }
                 catch (Exception Ex)
                 {
@@ -215,6 +272,8 @@ namespace FinalPatrick.Forms
                     sqlConnect.Close();
                 }
             }
+
         }
+
     }
 }

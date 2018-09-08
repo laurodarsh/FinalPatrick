@@ -118,6 +118,7 @@ namespace FinalPatrick.Forms
 
                 MessageBox.Show("Perfil de Usuario inativo!");
                 Log.SaveLog("Perfil de Usuario Excluido", "Exclusão", DateTime.Now);
+                ShowData();
             }
             catch (Exception Ex)
             {
