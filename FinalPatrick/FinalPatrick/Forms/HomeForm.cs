@@ -128,5 +128,12 @@ namespace FinalPatrick.Forms
 
         }
 
+        private void pbxBack_Click(object sender, EventArgs e)
+        {
+            LoginForm logfor = new LoginForm();
+            logfor.Show();
+            this.Close();
+
+        }
     }
 }

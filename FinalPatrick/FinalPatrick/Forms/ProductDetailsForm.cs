@@ -28,7 +28,7 @@ namespace FinalPatrick.Forms
         public ProductDetailsForm(User user)
         {
             InitializeComponent();
-
+            pbxDelete.Visible = false;
             cmbCategory.DisplayMember = "NAME";
             LoadComboBox();
             aux = user;

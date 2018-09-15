@@ -38,6 +38,9 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblLogin = new System.Windows.Forms.Label();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.lblrecoverPassword = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -109,10 +112,12 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.btnLogin.Location = new System.Drawing.Point(408, 241);
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Blue;
+            this.btnLogin.Location = new System.Drawing.Point(437, 242);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(222, 35);
+            this.btnLogin.Size = new System.Drawing.Size(166, 35);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "ENTRAR";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -140,6 +145,45 @@
             this.lblLogin.TabIndex = 7;
             this.lblLogin.Text = "LOGIN";
             // 
+            // btnSend
+            // 
+            this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSend.ForeColor = System.Drawing.Color.Blue;
+            this.btnSend.Location = new System.Drawing.Point(408, 145);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(222, 35);
+            this.btnSend.TabIndex = 9;
+            this.btnSend.Text = "ENVIAR";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Visible = false;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.ForeColor = System.Drawing.Color.Blue;
+            this.btnBack.Location = new System.Drawing.Point(287, 324);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(90, 35);
+            this.btnBack.TabIndex = 10;
+            this.btnBack.Text = "VOLTAR";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Visible = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lblrecoverPassword
+            // 
+            this.lblrecoverPassword.AutoSize = true;
+            this.lblrecoverPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblrecoverPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblrecoverPassword.ForeColor = System.Drawing.Color.White;
+            this.lblrecoverPassword.Location = new System.Drawing.Point(441, 308);
+            this.lblrecoverPassword.Name = "lblrecoverPassword";
+            this.lblrecoverPassword.Size = new System.Drawing.Size(149, 18);
+            this.lblrecoverPassword.TabIndex = 11;
+            this.lblrecoverPassword.Text = "Esqueci minha senha";
+            this.lblrecoverPassword.Click += new System.EventHandler(this.lblrecoverPassword_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -147,6 +191,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(815, 371);
+            this.Controls.Add(this.lblrecoverPassword);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLogin);
@@ -181,5 +228,8 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblrecoverPassword;
     }
 }

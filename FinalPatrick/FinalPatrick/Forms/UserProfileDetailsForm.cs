@@ -23,6 +23,7 @@ namespace FinalPatrick.Forms
         public UserProfileDetailsForm()
         {
             InitializeComponent();
+            pbxDelete.Visible = false;
         }
 
         public UserProfileDetailsForm(int idUserProfile)

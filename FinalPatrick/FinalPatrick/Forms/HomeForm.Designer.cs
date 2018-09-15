@@ -40,11 +40,13 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.pbxUser = new System.Windows.Forms.PictureBox();
             this.lbluserOn = new System.Windows.Forms.Label();
+            this.pbxBack = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUserProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // pbxCategory
@@ -179,12 +181,26 @@
             this.lbluserOn.Size = new System.Drawing.Size(0, 13);
             this.lbluserOn.TabIndex = 10;
             // 
+            // pbxBack
+            // 
+            this.pbxBack.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.pbxBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbxBack.BackgroundImage")));
+            this.pbxBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbxBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxBack.Location = new System.Drawing.Point(12, 279);
+            this.pbxBack.Name = "pbxBack";
+            this.pbxBack.Size = new System.Drawing.Size(45, 40);
+            this.pbxBack.TabIndex = 11;
+            this.pbxBack.TabStop = false;
+            this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.pbxBack);
             this.Controls.Add(this.lbluserOn);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.pbxUser);
@@ -204,6 +220,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUserProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +239,6 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.PictureBox pbxUser;
         private System.Windows.Forms.Label lbluserOn;
+        private System.Windows.Forms.PictureBox pbxBack;
     }
 }
