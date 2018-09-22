@@ -71,6 +71,7 @@
             this.pbxDelete.TabIndex = 14;
             this.pbxDelete.TabStop = false;
             this.pbxDelete.Click += new System.EventHandler(this.pbxDelete_Click);
+            this.pbxDelete.MouseEnter += new System.EventHandler(this.pbxDelete_MouseEnter);
             // 
             // pbxEdit
             // 
@@ -84,6 +85,7 @@
             this.pbxEdit.TabIndex = 13;
             this.pbxEdit.TabStop = false;
             this.pbxEdit.Click += new System.EventHandler(this.pbxEdit_Click);
+            this.pbxEdit.MouseEnter += new System.EventHandler(this.pbxEdit_MouseEnter);
             // 
             // pbxAdd
             // 
@@ -97,6 +99,7 @@
             this.pbxAdd.TabIndex = 12;
             this.pbxAdd.TabStop = false;
             this.pbxAdd.Click += new System.EventHandler(this.pbxAdd_Click);
+            this.pbxAdd.MouseEnter += new System.EventHandler(this.pbxAdd_MouseEnter);
             // 
             // dgvProduct
             // 
@@ -124,6 +127,7 @@
             this.pbxSearch.TabIndex = 10;
             this.pbxSearch.TabStop = false;
             this.pbxSearch.Click += new System.EventHandler(this.pbxSearch_Click_1);
+            this.pbxSearch.MouseEnter += new System.EventHandler(this.pbxSearch_MouseEnter);
             // 
             // tbxSearch
             // 
@@ -154,11 +158,13 @@
             this.button1.TabIndex = 25;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             // 
             // ProductAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 331);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pbxBack);

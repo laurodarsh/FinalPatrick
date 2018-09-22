@@ -52,6 +52,8 @@
             this.pbxBack.TabIndex = 31;
             this.pbxBack.TabStop = false;
             this.pbxBack.Click += new System.EventHandler(this.pbxBack_Click);
+            this.pbxBack.MouseEnter += new System.EventHandler(this.pbxBack_MouseEnter);
+            this.pbxBack.MouseLeave += new System.EventHandler(this.pbxBack_MouseLeave);
             // 
             // dgvLog
             // 
@@ -79,6 +81,7 @@
             this.pbxSearch.TabIndex = 26;
             this.pbxSearch.TabStop = false;
             this.pbxSearch.Click += new System.EventHandler(this.pbxSearch_Click);
+           
             // 
             // tbxSearch
             // 

@@ -145,6 +145,7 @@
             // 
             // btnClean
             // 
+            this.btnClean.BackColor = System.Drawing.Color.Transparent;
             this.btnClean.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClean.BackgroundImage")));
             this.btnClean.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnClean.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -152,13 +153,14 @@
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(36, 31);
             this.btnClean.TabIndex = 24;
-            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.UseVisualStyleBackColor = false;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
             // UserProfileAllForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 331);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.pbxBack);

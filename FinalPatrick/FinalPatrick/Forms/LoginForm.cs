@@ -17,6 +17,7 @@ namespace FinalPatrick.Forms
         string name = "";
         string password = "";
         User aux = new User();
+        bool updated = true;
         string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
 
         public LoginForm()
@@ -76,33 +77,42 @@ namespace FinalPatrick.Forms
         {
             User user = UserHelper.SelectByName(tbxName.Text);
 
-            SqlConnection sqlConnect = new SqlConnection(connectionString);
-
-            try
+            if (user.Name == null)
             {
-                EmailHelper.SendEmail(user.Email);
-
-                GetData();
-                sqlConnect.Open();
-                string sql = "UPDATE [USER] SET PASSWORD = @password Where ID = @id";
-
-                SqlCommand cmd = new SqlCommand(sql, sqlConnect);
-                cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash("456")));
-
-                cmd.Parameters.Add(new SqlParameter("@id", user.Id));
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Uma nova senha foi enviada para seu e-mail!");
-                Log.SaveLog("Usuário Editado", "Edição", DateTime.Now);
+                MessageBox.Show("Usuário não encontrado");
+                updated = false;
             }
-            catch (Exception Ex)
+            else
             {
-                MessageBox.Show("Erro ao enviar nova senha!" + "\n\n" + Ex.Message);
-                throw;
-            }
-            finally
-            {
-                sqlConnect.Close();
+                SqlConnection sqlConnect = new SqlConnection(connectionString);
+
+                try
+                {
+                    EmailHelper.SendEmail(user.Email);
+
+                    GetData();
+                    sqlConnect.Open();
+                    string sql = "UPDATE [USER] SET PASSWORD = @password Where ID = @id";
+
+                    SqlCommand cmd = new SqlCommand(sql, sqlConnect);
+                    cmd.Parameters.Add(new SqlParameter("@password", UserHelper.Hash("456")));
+
+                    cmd.Parameters.Add(new SqlParameter("@id", user.Id));
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Uma nova senha foi enviada para seu e-mail!");
+                    Log.SaveLog("Usuário Editado", "Edição", DateTime.Now);
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show("Erro ao enviar nova senha!" + "\n\n" + Ex.Message);
+                    updated = false;
+                    throw;
+                }
+                finally
+                {
+                    sqlConnect.Close();
+                }
             }
         }
 
@@ -116,7 +126,10 @@ namespace FinalPatrick.Forms
             if (tbxName.Text.Length > 0)
             {
                 UpdatePassword();
-                ShowComponents();
+                if (updated)
+                {
+                    ShowComponents();
+                }
             }
         }
 

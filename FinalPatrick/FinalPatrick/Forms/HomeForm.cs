@@ -29,22 +29,25 @@ namespace FinalPatrick.Forms
             aux = user;
 
             lbluserOn.Text = "Seja Bem Vindo " + user.Name;
+
         }
 
         private void pbxCategory_MouseEnter(object sender, EventArgs e)
         {
-            pbxCategory.BackColor = Color.White;
+
+            pbxCategory.BackColor = Color.Bisque;
 
         }
         private void pbxCategory_MouseLeave(object sender, EventArgs e)
         {
+           
             pbxCategory.BackColor = Color.White;
 
         }
 
         private void pbxProduct_MouseEnter(object sender, EventArgs e)
         {
-            pbxProduct.BackColor = Color.White;
+            pbxProduct.BackColor = Color.Bisque;
 
         }
 
@@ -56,7 +59,7 @@ namespace FinalPatrick.Forms
 
         private void pbxUserProfire_MouseEnter(object sender, EventArgs e)
         {
-            pbxUserProfile.BackColor = Color.White;
+            pbxUserProfile.BackColor = Color.Bisque;
 
         }
 
@@ -68,7 +71,7 @@ namespace FinalPatrick.Forms
 
         private void pbxLog_MouseEnter(object sender, EventArgs e)
         {
-            pbxLog.BackColor = Color.White;
+            pbxLog.BackColor = Color.Bisque;
 
         }
 
@@ -80,7 +83,7 @@ namespace FinalPatrick.Forms
 
         private void pbxUser_MouseEnter(object sender, EventArgs e)
         {
-            pbxUser.BackColor = Color.White;
+            pbxUser.BackColor = Color.Bisque;
 
         }
 
@@ -134,6 +137,17 @@ namespace FinalPatrick.Forms
             logfor.Show();
             this.Close();
 
+        }
+
+        private void pbxBack_MouseEnter(object sender, EventArgs e)
+        {
+            pbxBack.BackColor = Color.Bisque;
+
+        }
+
+        private void pbxBack_MouseLeave(object sender, EventArgs e)
+        {
+            pbxBack.BackColor = Color.White;
         }
     }
 }

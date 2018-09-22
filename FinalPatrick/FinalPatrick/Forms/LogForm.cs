@@ -92,5 +92,21 @@ namespace FinalPatrick.Forms
             ShowData();
 
         }
+
+        private void pbxBack_MouseEnter(object sender, EventArgs e)
+        {
+            pbxBack.BackColor = SystemColors.ActiveBorder;
+        }
+
+        private void pbxBack_MouseLeave(object sender, EventArgs e)
+        {
+
+            pbxBack.BackColor = SystemColors.Window;
+        }
+
+        private void pbxSearch_MouseEnter(object sender, EventArgs e)
+        {
+            pbxBack.BackColor = SystemColors.ActiveBorder;
+        }
     }
 }

@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 331);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.pbxDelete);
@@ -140,6 +140,7 @@
             this.Controls.Add(this.lblActive);
             this.Controls.Add(this.cbxActive);
             this.Controls.Add(this.lblName);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "CategoryDetailsForm";
             this.Text = "Formulário de Categoria";
             ((System.ComponentModel.ISupportInitialize)(this.pbxBack)).EndInit();

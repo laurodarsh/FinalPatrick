@@ -151,5 +151,30 @@ namespace FinalPatrick.Forms
 
             this.Close();
         }
+
+        private void pbxAdd_MouseEnter(object sender, EventArgs e)
+        {
+            pbxAdd.BackColor = Color.Bisque;
+        }
+
+        private void pbxEdit_MouseEnter(object sender, EventArgs e)
+        {
+            pbxEdit.BackColor = Color.Bisque;
+        }
+
+        private void pbxDelete_MouseEnter(object sender, EventArgs e)
+        {
+            pbxDelete.BackColor = Color.Bisque;
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+           button1.BackColor = Color.Bisque;
+        }
+
+        private void pbxSearch_MouseEnter(object sender, EventArgs e)
+        {
+           pbxSearch.BackColor = Color.Bisque;
+        }
     }
 }
