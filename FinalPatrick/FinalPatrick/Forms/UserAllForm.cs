@@ -14,7 +14,7 @@ namespace FinalPatrick.Forms
 {
     public partial class UserAllForm : Form
     {
-        string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
+        string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
 
         public UserAllForm()
@@ -28,7 +28,7 @@ namespace FinalPatrick.Forms
         private void pbxBack_Click(object sender, EventArgs e)
         {
 
-           
+
             this.Hide();
         }
 
@@ -47,7 +47,7 @@ namespace FinalPatrick.Forms
                 sqlConnect.Open();
 
                 SqlCommand cmd = new SqlCommand("SELECT [USER].ID ,[USER].NAME, [USER].EMAIL, [USER].ACTIVE, USER_PROFILE.NAME FROM [USER] INNER JOIN USER_PROFILE ON [USER].FK_USERPROFILE = USER_PROFILE.ID", sqlConnect);
-                
+
 
                 cmd.ExecuteNonQuery();
 
@@ -77,7 +77,7 @@ namespace FinalPatrick.Forms
             dgvUser.Columns["ACTIVE"].DisplayIndex = 4;
             dgvUser.Columns["NAME1"].HeaderText = "Perfil";
             dgvUser.Columns["NAME1"].DisplayIndex = 3;
-     
+
             foreach (DataGridViewColumn col in dgvUser.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;

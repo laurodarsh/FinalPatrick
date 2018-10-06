@@ -18,7 +18,8 @@ namespace FinalPatrick.Forms
         string password = "";
         User aux = new User();
         bool updated = true;
-        string connectionString = "workstation id=StockControlData.mssql.somee.com;packet size=4096;user id=luacademy_SQLLogin_1;pwd=msctq6gvt3;data source=StockControlData.mssql.somee.com;persist security info=False;initial catalog=StockControlData";
+
+        string connectionString = "workstation id=StockControl.mssql.somee.com;packet size=4096;user id=levelupacademy_SQLLogin_1;pwd=3wwate8gu1;data source=StockControl.mssql.somee.com;persist security info=False;initial catalog=StockControl";
 
         public LoginForm()
         {
@@ -52,7 +53,7 @@ namespace FinalPatrick.Forms
             return false;
         }
 
-        private void btnLogin_Click_1(object sender, EventArgs e)
+       private void btnLogin_Click_1(object sender, EventArgs e)
         {
             GetData();
             if (CheckLogin(password, name))
@@ -65,7 +66,7 @@ namespace FinalPatrick.Forms
             {
                 CleanData();
                 MessageBox.Show("Usuário ou senha incorretos!");
-            }
+           }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
